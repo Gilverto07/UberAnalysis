@@ -1,0 +1,163 @@
+---
+author: "Gilverto De Los Santos Rios"
+output: html_document
+source: https://www.kaggle.com/datasets/fivethirtyeight/uber-pickups-in-new-york-city
+---
+
+```{r}
+library(lubridate)
+library(ggplot2)
+```
+# Load Data
+```{r}
+april = read.csv(file = "~/R/projects/Uber/data/uber-raw-data-apr14.csv", header = TRUE, sep = ",")
+aug = read.csv(file = "~/R/projects/Uber/data/uber-raw-data-aug14.csv", header = TRUE, sep = ",")
+jul = read.csv(file = "~/R/projects/Uber/data/uber-raw-data-jul14.csv", header = TRUE, sep = ",")
+jun = read.csv(file = "~/R/projects/Uber/data/uber-raw-data-jun14.csv", header = TRUE, sep = ",")
+may = read.csv(file = "~/R/projects/Uber/data/uber-raw-data-may14.csv", header = TRUE, sep = ",")
+sep = read.csv(file = "~/R/projects/Uber/data/uber-raw-data-sep14.csv", header = TRUE, sep = ",")
+```
+
+
+# Trip Information for April
+```{r}
+april$Date.Time = as.POSIXct(april$Date.Time, format = "%m/%d/%Y %H:%M:%S")
+april$day = day(april$Date.Time)
+april$hour = hour(april$Date.Time)
+aprilDays = as.data.frame(table(april$day))
+aprilHours = as.data.frame(table(april$hour))
+```
+
+# Plot Trips for April
+```{r}
+ggplot(aprilDays, aes(x = Var1, y = Freq)) + 
+  geom_bar(stat = "identity", fill = "skyblue") + 
+  labs(title = "Trips per Day in April", x = "Day of the Month", y = "Trips")
+
+ggplot(aprilHours, aes(x = Var1, y = Freq)) + 
+  geom_bar(stat = "identity", fill = "skyblue") + 
+  labs(title = "Trips per Hour in April", x = "Hour", y = "Trips")
+```
+
+# Trip Information for August
+```{r}
+aug$Date.Time = as.POSIXct(aug$Date.Time, format = "%m/%d/%Y %H:%M:%S")
+aug$day = day(aug$Date.Time)
+aug$hour = hour(aug$Date.Time)
+augDays = as.data.frame(table(aug$day))
+augHours = as.data.frame(table(aug$hour))
+```
+
+# Plot Trips for August
+```{r}
+ggplot(augDays, aes(x = Var1, y = Freq)) + 
+  geom_bar(stat = "identity", fill = "skyblue") + 
+  labs(title = "Trips per Day in August", x = "Day of the Month", y = "Trips")
+
+ggplot(augHours, aes(x = Var1, y = Freq)) + 
+  geom_bar(stat = "identity", fill = "skyblue") + 
+  labs(title = "Trips per Hour in August", x = "Hour", y = "Trips")
+```
+
+# Trips Information for July
+```{r}
+jul$Date.Time <- as.POSIXct(jul$Date.Time, format = "%m/%d/%Y %H:%M:%S")
+jul$day <- day(jul$Date.Time)
+jul$hour <- hour(jul$Date.Time)
+julDays <- as.data.frame(table(jul$day))
+julHours <- as.data.frame(table(jul$hour))
+```
+
+# Plot Trips for July
+```{r}
+ggplot(julDays, aes(x = Var1, y = Freq)) + 
+  geom_bar(stat = "identity", fill = "skyblue") + 
+  labs(title = "Trips per Day in July", x = "Day of the Month", y = "Trips")
+
+ggplot(julHours, aes(x = Var1, y = Freq)) + 
+  geom_bar(stat = "identity", fill = "skyblue") + 
+  labs(title = "Trips per Hour in July", x = "Hour", y = "Trips")
+```
+
+# Trip Information for June
+```{r}
+jun$Date.Time <- as.POSIXct(jun$Date.Time, format = "%m/%d/%Y %H:%M:%S")
+jun$day <- day(jun$Date.Time)
+jun$hour <- hour(jun$Date.Time)
+junDays <- as.data.frame(table(jun$day))
+junHours <- as.data.frame(table(jun$hour))
+```
+
+# Plot Trips for June
+```{r}
+ggplot(junDays, aes(x = Var1, y = Freq)) + 
+  geom_bar(stat = "identity", fill = "skyblue") + 
+  labs(title = "Trips per Day in June", x = "Day of the Month", y = "Trips")
+
+ggplot(junHours, aes(x = Var1, y = Freq)) + 
+  geom_bar(stat = "identity", fill = "skyblue") + 
+  labs(title = "Trips per Hour in June", x = "Hour", y = "Trips")
+```
+
+# Trip Information for May
+```{r}
+may$Date.Time <- as.POSIXct(may$Date.Time, format = "%m/%d/%Y %H:%M:%S")
+may$day <- day(may$Date.Time)
+may$hour <- hour(may$Date.Time)
+mayDays <- as.data.frame(table(may$day))
+mayHours <- as.data.frame(table(may$hour))
+```
+
+# Plot Trips for May
+```{r}
+ggplot(mayDays, aes(x = Var1, y = Freq)) + 
+  geom_bar(stat = "identity", fill = "skyblue") + 
+  labs(title = "Trips per Day in May", x = "Day of the Month", y = "Trips")
+
+ggplot(mayHours, aes(x = Var1, y = Freq)) + 
+  geom_bar(stat = "identity", fill = "skyblue") + 
+  labs(title = "Trips per Hour in May", x = "Hour", y = "Trips")
+```
+
+# Trip Information for September
+```{r}
+sep$Date.Time <- as.POSIXct(sep$Date.Time, format = "%m/%d/%Y %H:%M:%S")
+sep$day <- day(sep$Date.Time)
+sep$hour <- hour(sep$Date.Time)
+sepDays <- as.data.frame(table(sep$day))
+sepHours <- as.data.frame(table(sep$hour))
+```
+
+# Plot Trips for September
+```{r}
+ggplot(sepDays, aes(x = Var1, y = Freq)) + 
+  geom_bar(stat = "identity", fill = "skyblue") + 
+  labs(title = "Trips per Day in September", x = "Day of the Month", y = "Trips")
+
+ggplot(sepHours, aes(x = Var1, y = Freq)) + 
+  geom_bar(stat = "identity", fill = "skyblue") + 
+  labs(title = "Trips per Hour in September", x = "Hour", y = "Trips")
+```
+
+# Trip Information for all Months
+```{r}
+combinedData = rbind(april, aug, jul, jun, may, sep)
+combinedData$month = month(combinedData$Date.Time)
+combinedDataMonths = as.data.frame(table(combinedData$month))
+combinedDataHours = as.data.frame(table(combinedData$hour))
+```
+
+# Plots for Combined Months
+```{r}
+ggplot(combinedDataMonths, aes(x = Var1, y = Freq)) + 
+  geom_bar(stat = "identity", fill = "skyblue") + 
+  labs(title = "Trips per Month", x = "Month", y = "Trips")
+
+ggplot(combinedDataHours, aes(x = Var1, y = Freq)) + 
+  geom_bar(stat = "identity", fill = "skyblue") + 
+  labs(title = "Trips by Hour for Six Months", x = "Time", y = "Trips")
+```
+
+
+
+
